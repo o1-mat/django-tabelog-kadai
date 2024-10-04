@@ -21,16 +21,19 @@
     <input type="text" name="restaurant" value="{{ restaurant.id }}">
     {% endcomment %}
 
+    <label for="star">評価 (1〜5):</label>
     <input type="number" name="star" min="1" max="5">
-    <input type="text" name="content">
+    <label for="content">レビュー内容:</label>
+    <textarea id="content" name="content" rows="4" placeholder="レビューを入力してください。" required></textarea>
 
     <input type="submit" value="投稿">
 </form>
 
+
 {# TODO:お気に入りのボタンを用意する #}
 <form action="{% url 'favorite' restaurant.id %}" method="post">
     {% csrf_token %}
-    <input type="submit" value="お気に入りする">
+    <input type="submit" value="お気に入り登録する">
 </form>
 
 
