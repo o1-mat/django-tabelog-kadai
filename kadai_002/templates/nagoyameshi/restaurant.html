@@ -39,11 +39,16 @@
 
 {# 予約フォーム #}
 <form action="{% url 'reservation' restaurant.id %}" method="post">
-    {% csrf_token %}    
-    <input type="datetime-local" name="datetime">
-    <input type="text" name="headcount">
+    {% csrf_token %}
+    <label for="datetime">予約日時を選択してください:</label><br>
+    <input type="datetime-local" id="datetime" name="datetime" required><br><br>
+    
+    <label for="headcount">人数を入力してください:</label><br>
+    <input type="number" id="headcount" name="headcount" min="1" placeholder="例: 2" required><br><br>
+    
     <input type="submit" value="予約">
 </form>
+
 
 
 
