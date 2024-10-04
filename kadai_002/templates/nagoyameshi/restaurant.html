@@ -1,10 +1,10 @@
 {% extends 'base.html' %} {% block title %}NAGOYAMESHI{% endblock %} {% block content %}
 <a href="{% url 'top' %}" class="button">トップページに戻る</a>
-<h4>店舗詳細</h4>
-<h5>{{ restaurant.name }}</h5> <br>
+<h6>店舗詳細</h6>
+<h4>{{ restaurant.name }}</h4> <br>
 {# 店舗説明(description)を表示するには？ #}
-<h5>[店舗説明]{{ restaurant.description }}</h5> <br>
-<h5>[営業時間]{{ restaurant.start_at }}~{{ restaurant.end_at }}</h5> <br>
+<h6>[店舗説明]{{ restaurant.description }}</h6> <br>
+<h6>[営業時間]{{ restaurant.start_at }}~{{ restaurant.end_at }}</h6> <br>
 
 {# TODO:お気に入りのボタンを用意する #}
 <form action="{% url 'favorite' restaurant.id %}" method="post">
