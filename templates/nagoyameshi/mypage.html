@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% block title %}NAGOYAMESHI{% endblock %}
+
+
+{% block content %}
+
+
+<h2>お気に入り店舗の一覧</h2>
+
+{% if reservations %}
+    {% for favorite in favorites %}
+    <div>
+        <div>店舗名: {{ favorite.restaurant }}</div>
+        <a href="{% url 'restaurant' favorite.restaurant.id %}">詳細</a>
+    </div>
+    {% endfor %}
+{% else %}
+    <p>現在、お気に入り店舗はありません。</p>
+{% endif %}
+
+
+{% if is_premium %}
+    <a href="{% url 'portal' %}">有料会員設定</a>
+{% else %}
+    {# CheckoutView の postメソッドを呼び出す。 #}
+    <form action="{% url 'checkout' %}" method="post">
+        {% csrf_token %}
+        <input type="submit" value="有料会員登録はこちら">
+    </form>
+{% endif %}
+
+
+<h2>予約一覧</h2>
+
+{% if reservations %}
+    {% for reservation in reservations %}
+    <div>
+        <div>店舗名: {{ reservation.restaurant }}</div>
+        <div>予約日: {{ reservation.datetime }}</div>
+        <div>人数: {{ reservation.headcount }}名</div>
+        <a href="{% url 'reservation' reservation.restaurant.id %}">詳細</a>
+    </div>
+    <hr>
+    {% endfor %}
+{% else %}
+    <p>現在、予約はありません。</p>
+{% endif %}
+
+
+{% endblock %}
