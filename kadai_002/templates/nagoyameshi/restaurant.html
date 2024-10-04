@@ -1,9 +1,9 @@
 {% extends 'base.html' %} {% block title %}NAGOYAMESHI{% endblock %} {% block content %}
-店舗詳細ページ
-<h2>{{ restaurant.name }}</h2> <br>
+<h3>店舗詳細ページ</h3>
+<h4>{{ restaurant.name }}</h4> <br>
 {# 店舗説明(description)を表示するには？ #}
-<h3>[店舗説明]{{ restaurant.description }}</h3> <br>
-<h3>[営業時間]{{ restaurant.start_at }}~{{ restaurant.end_at }}</h3> <br>
+<h4>[店舗説明]{{ restaurant.description }}</h4> <br>
+<h4>[営業時間]{{ restaurant.start_at }}~{{ restaurant.end_at }}</h4> <br>
 
 {# TODO:お気に入りのボタンを用意する #}
 <form action="{% url 'favorite' restaurant.id %}" method="post">
@@ -31,7 +31,7 @@
     <input type="number" name="star" min="1" max="5">
     <label for="content">レビュー内容:</label>
     <textarea id="content" name="content" rows="4" placeholder="レビューを入力してください。" required></textarea>
-
+    <br>
     <input type="submit" value="投稿">
 </form>
 
@@ -45,14 +45,14 @@
     
     <label for="headcount">人数を入力してください:</label><br>
     <input type="number" id="headcount" name="headcount" min="1" placeholder="例: 2" required><br><br>
-    
+    <br>
     <input type="submit" value="予約">
 </form>
 
 
 
 
-<h3>レビュー一覧</h3>
+<h5>レビュー一覧</h5>
 
 {# reviews を1つずつ取り出して表示する #}
 {% for review in reviews %}
