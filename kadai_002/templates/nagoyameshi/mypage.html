@@ -38,7 +38,7 @@
         <div>店舗名: {{ reservation.restaurant }}</div>
         <div>予約日: {{ reservation.datetime }}</div>
         <div>人数: {{ reservation.headcount }}名</div>
-        <a href="{% url 'reservation' reservation.restaurant.id %}">詳細</a>
+        <a href="{% url 'restaurant' reservation.restaurant.id %}">詳細</a>
     </div>
     <hr>
     {% endfor %}
