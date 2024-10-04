@@ -3,9 +3,9 @@
 
 
 {% block content %}
+<a href="{% url 'top' %}" class="button">トップページに戻る</a>
 
-
-<h2>お気に入り店舗の一覧</h2>
+<h4>お気に入り店舗の一覧</h4>
 
 {% if reservations %}
     {% for favorite in favorites %}
@@ -30,7 +30,7 @@
 {% endif %}
 
 
-<h2>予約一覧</h2>
+<h4>予約一覧</h4>
 
 {% if reservations %}
     {% for reservation in reservations %}
