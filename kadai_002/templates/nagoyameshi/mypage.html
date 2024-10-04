@@ -35,9 +35,9 @@
 {% if reservations %}
     {% for reservation in reservations %}
     <div>
-        <div>店舗名: {{ reservation.restaurant }}</div>
-        <div>予約日: {{ reservation.restaurant.datetime }}</div>
-        <div>人数: {{ reservation.restaurant.headcount }}名</div>
+        <div>店舗名: {{ reservation.restaurant.name }}</div>
+        <div>予約日: {{ reservation.datetime }}</div>
+        <div>人数: {{ reservation.headcount }}名</div>
         <a href="{% url 'restaurant' reservation.restaurant.id %}">詳細</a>
     </div>
     <hr>
