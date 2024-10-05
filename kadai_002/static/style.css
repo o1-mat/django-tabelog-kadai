@@ -1,112 +1,135 @@
 body {
-    background-color: #eef3fa;
-    font-family: 'Arial', sans-serif;
-    margin: 0; 
+    background-color: #f5f5f5; /* 柔らかいアイボリーグレーで上品な雰囲気を演出 */
+    font-family: 'Georgia', serif; /* セリフフォントで高級感を演出 */
+    color: #333;
+    margin: 0;
     padding: 0;
+    line-height: 1.8; /* 行間を広くして読みやすさを強調 */
 }
 
-
-
+/* コンテナ */
 .container {
     margin-top: 20px;
-    padding: 20px; 
-    background-color: #ffffff; 
-    border-radius: 10px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); 
-}
-
-
-form {
-    margin-bottom: 20px; 
-    display: flex;
-    align-items: center; 
-}
-
-/* 検索フォーム */
-input[type="text"] {
-    padding: 5px;
-    font-size: 1em; 
-    margin-right: 10px; 
-    border-radius: 5px; 
-    border: 1px solid #b0b8c1; 
-}
-
-/* 検索ボタン */
-input[type="submit"] {
-    background-color: #5e7d9b; 
-    color: white; 
-    padding: 5px 10px; 
-    border: none;
-    border-radius: 5px; 
-    cursor: pointer; 
-}
-
-/* 検索ボタンにカーソルを重ねとき */
-input[type="submit"]:hover {
-    background-color: #496384;
-}
-
-/* 店舗情報(カードデザイン） */
-.restaurant-card {
+    padding: 30px;
     background-color: #ffffff;
-    border-radius: 10px; 
-    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1); 
-    padding: 15px; 
-    margin-bottom: 20px; 
+    border-radius: 15px; /* 少し丸みを持たせて柔らかな印象に */
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1); /* シャドウで上質感を追加 */
 }
 
-/* 店舗名 */
-.restaurant-card .name {
-    margin: 0; 
-    font-size: 1.5em; 
-    color: #2c3e50; 
-    background-color: #c9d6df; 
-    padding: 5px; 
-    border-radius: 5px;
-}
-
-/* 店舗説明 */
-.restaurant-card .description {
-    font-size: 1em; 
-    color: #495057; 
-    background-color: #e8ecf1; 
-    padding: 5px; 
-    border-radius: 5px; 
-    margin-top: 10px;
-}
-
-/* 営業時間 */
-.restaurant-card .hours {
-    font-size: 0.8em; 
-    color: #6c757d; 
-    background-color: #d3f4d3; 
-    padding: 5px; 
-    border-radius: 5px; 
-    margin-top: 10px; 
-}
-
+/* ボタンの改善 */
 .button {
     display: inline-block;
-    padding: 12px 24px; /* パディングを少し広めに調整 */
+    padding: 12px 28px;
     font-size: 16px;
-    color: white;
-    background-color: #4682b4; /* スチールブルー */
+    color: #ffffff;
+    background-color: #2f3e56; /* 落ち着いたダークネイビー */
+    border: 2px solid #d4af37; /* ゴールドのボーダーで高級感を演出 */
     text-decoration: none;
-    border-radius: 5px;
-    margin-bottom: 15px; /* ボタン間の縦方向の間隔を設定 */
+    border-radius: 25px; /* 丸みを持たせて親しみやすさを */
+    transition: background 0.4s, box-shadow 0.4s;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15); /* 控えめな影で立体感を追加 */
 }
 
 .button:hover {
-    background-color: #2e8b57; /* シーグリーン */
+    background-color: #1e2b40; /* ホバー時に少し暗めの色に変更して落ち着いた変化を演出 */
+    box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.2); /* シャドウを強調し、浮き上がり感を演出 */
 }
 
-.premium-setting {
-    font-size: 20px;
-    font-weight: bold;
-    color: #333;
-    list-style-type: disc; /* 箇条書きのスタイル */
-    padding-left: 20px;
-    margin-left: 40px;
-    display: list-item; /* 箇条書きとして表示 */
+/* フォームの入力フィールド */
+input[type="text"], input[type="number"], input[type="datetime-local"] {
+    padding: 12px;
+    font-size: 1em;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    width: 100%;
+    max-width: 600px; 
+    transition: box-shadow 0.3s, border-color 0.3s;
+    background-color: #fafafa; /* 柔らかい背景色で落ち着いた印象 */
 }
-  
+
+input[type="text"]:focus, input[type="number"]:focus, input[type="datetime-local"]:focus {
+    box-shadow: 0px 0px 10px rgba(212, 175, 55, 0.3); /* ゴールドのグローで高級感を演出 */
+    border-color: #d4af37; /* フォーカス時にゴールドの枠 */
+}
+
+/* 店舗カードのデザイン */
+.restaurant-card {
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 30px;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e5e5e5; /* 軽く目立つ枠を追加 */
+    border-left: 5px solid #d4af37; /* 左側にゴールドラインを追加し高級感を演出 */
+    transition: transform 0.4s, box-shadow 0.4s;
+}
+
+.restaurant-card:hover {
+    transform: translateY(-3px); /* ホバー時にわずかに浮き上がる */
+    box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.15); /* 上質な影で立体感を追加 */
+}
+
+.restaurant-card .name {
+    font-size: 1.8em;
+    color: #2f3e56; /* タイトルの色をダークネイビーにして高級感 */
+    font-weight: bold;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 10px;
+}
+
+.restaurant-card .description, .restaurant-card .hours {
+    font-size: 1em;
+    color: #666;
+    padding: 5px 0;
+    margin-top: 10px;
+    line-height: 1.8; /* 読みやすさを強調 */
+}
+
+/* レビュー一覧 */
+.review {
+    background-color: #ffffff;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 12px;
+    border-left: 5px solid #2f3e56; /* ダークネイビーのラインを追加 */
+    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1);
+    font-style: italic; /* 上品な印象のためにイタリック */
+}
+
+/* アニメーション */
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.restaurant-card, .button, .review {
+    animation: fadeInUp 0.8s ease-in-out; /* ゆっくりとしたアニメーションで上品さを強調 */
+}
+
+/* レスポンシブデザイン */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+    }
+
+    .button {
+        font-size: 14px;
+        padding: 10px 25px;
+    }
+
+    .restaurant-card {
+        padding: 15px;
+    }
+
+    input[type="text"], input[type="number"], input[type="datetime-local"] {
+        width: calc(100% - 30px);
+    }
+}
