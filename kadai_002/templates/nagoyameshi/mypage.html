@@ -5,7 +5,7 @@
 {% block content %}
 <a href="{% url 'top' %}" class="button">トップページに戻る</a>
 
-<h4>お気に入り店舗の一覧</h4>
+<h4 class="premium-setting">お気に入り店舗の一覧</h4>
 
 {% if favorites %}
     {% for favorite in favorites %}
@@ -18,9 +18,10 @@
     <p>現在、お気に入り店舗はありません。</p>
 {% endif %}
 
+<h4 class="premium-setting">有料会員設定</h4>
 
 {% if is_premium %}
-    <a href="{% url 'portal' %}">有料会員設定</a>
+    <a href="{% url 'portal' %}">有料会員の設定はこちら</a>
 {% else %}
     {# CheckoutView の postメソッドを呼び出す。 #}
     <form action="{% url 'checkout' %}" method="post">
@@ -30,7 +31,7 @@
 {% endif %}
 
 
-<h4>予約一覧</h4>
+<h4 class="premium-setting">予約一覧</h4>
 
 {% if reservations %}
     {% for reservation in reservations %}

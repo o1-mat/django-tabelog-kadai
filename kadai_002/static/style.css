@@ -99,3 +99,13 @@ input[type="submit"]:hover {
 .button:hover {
     background-color: #2e8b57; /* シーグリーン */
 }
+
+.premium-setting {
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+    list-style-type: disc; /* 箇条書きのスタイル */
+    padding-left: 20px;
+    display: list-item; /* 箇条書きとして表示 */
+}
+  
