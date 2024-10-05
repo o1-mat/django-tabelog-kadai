@@ -38,7 +38,7 @@ urlpatterns = [
     # MypageViewを呼び出す。
     path('mypage/', MypageView.as_view(), name="mypage"),
     path('favorite/delete/<int:pk>/', DeleteFavoriteView.as_view(), name='delete_favorite'),
-    path('reservation/delete/<int:pk>/', DeleteReservationView.as_view(), name='delete_favorite'),
+    path('reservation/delete/<int:pk>/', DeleteReservationView.as_view(), name='delete_reservation'),
 
     path('accounts/', include('allauth.urls')),
 
