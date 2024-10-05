@@ -11,6 +11,8 @@ from .models import Category
 from .models import Review
 # models.py から Favorite を importする
 from .models import Favorite
+# models.py から Reservation を importする
+from .models import Reservation
 # models.py から PremiumUser をimportする
 from .models import PremiumUser
 
