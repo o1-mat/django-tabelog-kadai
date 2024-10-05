@@ -293,9 +293,10 @@ class DeleteReservationView(LoginRequiredMixin, View):
 
 # レビューの編集を受け付けるビュー
 class EditReviewView(LoginRequiredMixin, View):
-    def get(self, request, review_id, *args, **kwargs):
+    
+    def get(self, request, pk, *args, **kwargs):
         # ログインユーザーが投稿したレビューを取得
-        review = get_object_or_404(Review, id=review_id, user=request.user)
+        review = get_object_or_404(Review, pk=pk, user=request.user)
         form = ReviewForm(instance=review)
         context = {
             'form': form,
@@ -303,15 +304,15 @@ class EditReviewView(LoginRequiredMixin, View):
         }
         return render(request, 'nagoyameshi/edit_review.html', context)
 
-    def post(self, request, review_id, *args, **kwargs):
+    def post(self, request, pk, *args, **kwargs):
         # ログインユーザーが投稿したレビューを取得
-        review = get_object_or_404(Review, id=review_id, user=request.user)
+        review = get_object_or_404(Review, pk=pk, user=request.user)
         form = ReviewForm(request.POST, instance=review)
         
         if form.is_valid():
             form.save()
             # 編集後、店舗の詳細ページへリダイレクト
-            return redirect('restaurant', pk=review.restaurant.id)
+            return redirect('restaurant', pk)
         context = {
             'form': form,
             'review': review,
@@ -321,14 +322,14 @@ class EditReviewView(LoginRequiredMixin, View):
 
 # レビューの削除を受け付けるビュー
 class DeleteReviewView(LoginRequiredMixin, View):
-    def post(self, request, review_id, *args, **kwargs):
+    def post(self, request, pk, *args, **kwargs):
         # ログインユーザーが投稿したレビューを取得
-        review = get_object_or_404(Review, id=review_id, user=request.user)
+        review = get_object_or_404(Review, pk=pk, user=request.user)
         restaurant_id = review.restaurant.id
         # レビューを削除
         review.delete()
         # 削除後、店舗の詳細ページへリダイレクト
-        return redirect('restaurant', pk=restaurant_id)
+        return redirect('restaurant', pk)
 
 
 # Stripeの処理 #
