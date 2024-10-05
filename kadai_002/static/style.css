@@ -106,6 +106,7 @@ input[type="submit"]:hover {
     color: #333;
     list-style-type: disc; /* 箇条書きのスタイル */
     padding-left: 20px;
+    margin-left: 40px;
     display: list-item; /* 箇条書きとして表示 */
 }
   
