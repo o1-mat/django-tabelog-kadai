@@ -37,48 +37,34 @@ body {
 }
 
 /* ラベル */
-.label-short {
-    display: inline-block;
-    width: 80px; /* 短く設定 */
+.label-short, .label-long {
+    display: block; /* ラベルをブロック要素にして、入力フィールドの上に表示 */
     font-weight: bold;
-}
-
-.label-long {
-    display: inline-block;
-    width: 150px; /* 長く設定 */
-    font-weight: bold;
+    margin-bottom: 5px; /* ラベルと入力フィールドの間に余白を追加 */
 }
 
 /* フォームの入力フィールド */
-input[type="text"], input[type="number"], input[type="datetime-local"] {
-    padding: 12px;
-    font-size: 1em;
-    margin-bottom: 15px;
+input[type="text"], input[type="number"], input[type="datetime-local"], textarea {
+    display: block; /* 入力フィールドをブロック要素にして幅を占有 */
+    width: 100%;
+    max-width: 600px;
+    padding: 10px;
+    margin-bottom: 15px; /* 入力フィールド間に余白を追加 */
     border-radius: 8px;
     border: 1px solid #ccc;
-    width: 100%;
-    max-width: 600px; 
     transition: box-shadow 0.3s, border-color 0.3s;
     background-color: #fafafa; /* 柔らかい背景色で落ち着いた印象 */
 }
 
-input[type="text"]:focus, input[type="number"]:focus, input[type="datetime-local"]:focus {
+input[type="text"]:focus, input[type="number"]:focus, input[type="datetime-local"]:focus, textarea:focus {
     box-shadow: 0px 0px 10px rgba(212, 175, 55, 0.3); /* ゴールドのグロー */
     border-color: #d4af37; /* フォーカス時にゴールドの枠 */
 }
 
 /* 数値入力フィールド */
 input[type="number"] {
-    width: 50px; /* 数値入力の幅を狭く設定 */
-    padding: 5px;
-    margin-left: 10px; /* ラベルとの間隔を調整 */
-}
-
-/* テキストエリア */
-textarea {
-    width: calc(100% - 20px); /* 幅を調整してフォーム全体にフィットさせる */
-    padding: 10px;
-    margin-top: 5px;
+    max-width: 100px; /* 幅を少し狭く設定して、他の要素とのバランスを取る */
+    margin-left: 0; /* ラベルとの間隔をリセット */
 }
 
 /* 店舗カードのデザイン */
@@ -157,7 +143,7 @@ textarea {
         padding: 15px;
     }
 
-    input[type="text"], input[type="number"], input[type="datetime-local"] {
+    input[type="text"], input[type="number"], input[type="datetime-local"], textarea {
         width: calc(100% - 30px);
     }
 }
