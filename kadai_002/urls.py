@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
-from nagoyameshi.views import TopView,RestaurantView,ReviewView,FavoriteView,ReservationView,MypageView,CheckoutView,SuccessView,PortalView,DeleteFavoriteView,DeleteReservationView
+from nagoyameshi.views import TopView,RestaurantView,ReviewView,FavoriteView,ReservationView,MypageView,CheckoutView,SuccessView,PortalView,DeleteFavoriteView,DeleteReservationView,EditReviewView,DeleteReviewView
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -39,6 +39,8 @@ urlpatterns = [
     path('mypage/', MypageView.as_view(), name="mypage"),
     path('favorite/delete/<int:pk>/', DeleteFavoriteView.as_view(), name='delete_favorite'),
     path('reservation/delete/<int:pk>/', DeleteReservationView.as_view(), name='delete_reservation'),
+    path('review/edit/<int:pk>/', EditReviewView.as_view(), name='edit_review'),
+    path('review/delete/<int:pk>/', DeleteReviewView.as_view(), name='delete_review'),
 
     path('accounts/', include('allauth.urls')),
 
