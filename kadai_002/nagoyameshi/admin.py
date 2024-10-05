@@ -12,7 +12,8 @@ class CategoryAdmin(admin.ModelAdmin):
 
 class RestaurantAdmin(admin.ModelAdmin):
     list_display    = [ "id", "category", "name", "image", "description", "start_at", "end_at", "min_cost", "max_cost", "post_code", "address", "tel", "created_at", "updated_at" ]
-    search_fields   = [ "category__name","name" ]
+    search_fields   = [ "name" ]
+    list_filter     = [ "category" ]
 
 class ReviewAdmin(admin.ModelAdmin):
     list_display	= [ "id", "user", "restaurant", "star", "content", "created_at", "updated_at" ]

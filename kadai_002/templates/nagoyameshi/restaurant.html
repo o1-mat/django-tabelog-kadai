@@ -63,6 +63,15 @@
     <div>星の数: {{ review.star }}</div>
     <div>投稿者: {{ review.user }}</div>
     <div>レビュー: {{ review.content }}</div>
+
+    {% if review.user == request.user %}
+    <a href="{% url 'edit_review' review.id %}" class="button">編集</a>
+    <form action="{% url 'delete_review' review.id %}" method="post" style="display:inline;">
+        {% csrf_token %}
+        <input type="submit" value="削除" onclick="return confirm('本当に削除しますか？');">
+    </form>
+    {% endif %}
+    
 </div>
 {% endfor %}
 

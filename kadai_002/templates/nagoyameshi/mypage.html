@@ -13,7 +13,7 @@
         <a href="{% url 'restaurant' favorite.restaurant.id %}">詳細</a>
         <form action="{% url 'delete_favorite' favorite.id %}" method="post" style="display:inline;">
             {% csrf_token %}
-            <input type="submit" value="削除">
+            <input type="submit" value="削除" onclick="return confirm('本当にお気に入りから削除しますか？');">
         </form>
     </div>
     {% endfor %}
@@ -45,7 +45,7 @@
         <a href="{% url 'restaurant' reservation.restaurant.id %}">詳細</a>
         <form action="{% url 'delete_reservation' reservation.id %}" method="post" style="display:inline;">
             {% csrf_token %}
-            <input type="submit" value="削除">
+            <input type="submit" value="削除" onclick="return confirm('本当に予約を削除しますか？');">
         </form>
     </div>
     <hr>

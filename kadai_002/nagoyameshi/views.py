@@ -291,6 +291,45 @@ class DeleteReservationView(LoginRequiredMixin, View):
         return redirect("mypage")
 
 
+# レビューの編集を受け付けるビュー
+class EditReviewView(LoginRequiredMixin, View):
+    def get(self, request, review_id, *args, **kwargs):
+        # ログインユーザーが投稿したレビューを取得
+        review = get_object_or_404(Review, id=review_id, user=request.user)
+        form = ReviewForm(instance=review)
+        context = {
+            'form': form,
+            'review': review,
+        }
+        return render(request, 'nagoyameshi/edit_review.html', context)
+
+    def post(self, request, review_id, *args, **kwargs):
+        # ログインユーザーが投稿したレビューを取得
+        review = get_object_or_404(Review, id=review_id, user=request.user)
+        form = ReviewForm(request.POST, instance=review)
+        
+        if form.is_valid():
+            form.save()
+            # 編集後、店舗の詳細ページへリダイレクト
+            return redirect('restaurant', pk=review.restaurant.id)
+        context = {
+            'form': form,
+            'review': review,
+        }
+        return render(request, 'nagoyameshi/edit_review.html', context)
+
+
+# レビューの削除を受け付けるビュー
+class DeleteReviewView(LoginRequiredMixin, View):
+    def post(self, request, review_id, *args, **kwargs):
+        # ログインユーザーが投稿したレビューを取得
+        review = get_object_or_404(Review, id=review_id, user=request.user)
+        restaurant_id = review.restaurant.id
+        # レビューを削除
+        review.delete()
+        # 削除後、店舗の詳細ページへリダイレクト
+        return redirect('restaurant', pk=restaurant_id)
+
 
 # Stripeの処理 #
 from django.conf import settings
