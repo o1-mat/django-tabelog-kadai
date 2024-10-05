@@ -43,6 +43,10 @@
         <div>予約日: {{ reservation.datetime }}</div>
         <div>人数: {{ reservation.headcount }}名</div>
         <a href="{% url 'restaurant' reservation.restaurant.id %}">詳細</a>
+        <form action="{% url 'delete_reservation' reservation.id %}" method="post" style="display:inline;">
+            {% csrf_token %}
+            <input type="submit" value="削除">
+        </form>
     </div>
     <hr>
     {% endfor %}

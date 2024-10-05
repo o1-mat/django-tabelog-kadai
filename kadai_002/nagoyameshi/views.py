@@ -277,6 +277,20 @@ class DeleteFavoriteView(LoginRequiredMixin, View):
         return redirect("mypage")
 
 
+# 予約の削除を受け付けるビュー
+class DeleteReservationView(LoginRequiredMixin, View):
+    
+    def post(self, request, pk, *args, **kwargs):
+        # ログインユーザーが行った予約データを取得
+        reservation = get_object_or_404(Reservation, pk=pk, user=request.user)
+
+        # 予約を削除
+        reservation.delete()
+        
+        # 削除後、マイページへリダイレクト
+        return redirect("mypage")
+
+
 
 # Stripeの処理 #
 from django.conf import settings
