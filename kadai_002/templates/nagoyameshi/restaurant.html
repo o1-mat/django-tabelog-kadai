@@ -28,12 +28,13 @@
     <input type="text" name="restaurant" value="{{ restaurant.id }}">
     {% endcomment %}
 
-    <label for="star">評価 (星1〜5):</label>
-    <input type="number" name="star" min="1" max="5"><br><br>
-    <label for="content">レビュー内容:</label>
-    <textarea id="content" name="content" rows="4" placeholder="レビューを入力してください。" required></textarea><br>
-
-    <input type="submit" value="レビューを投稿">
+    <label for="star" class="label-short">評価 (星1〜5):</label>
+    <input type="number" id="star" name="star" min="1" max="5"><br><br>
+    
+    <label for="content" class="label-long">レビュー内容:</label>
+    <textarea id="content" name="content" rows="4" placeholder="レビューを入力してください。" required></textarea><br><br>
+    
+    <input type="submit" value="レビューを投稿">    
 </form><br><br>
 
 
