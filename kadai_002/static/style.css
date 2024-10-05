@@ -1,22 +1,22 @@
 body {
-    background-color: #121212; /* 深い黒に近い背景色で高級感 */
+    background-color: #ffffff; /* 白を基調 */
     font-family: 'Garamond', serif; /* 洗練されたフォント */
-    color: #e0e0e0; /* 明るすぎないホワイト */
+    color: #333; /* 濃いグレーで視認性を確保 */
     line-height: 1.8;
     margin: 0;
     padding: 0;
 }
 
 .container {
-    background-color: #1c1c1c; /* ダークグレーの背景 */
+    background-color: #ffffff; /* 背景色は白に */
     border-radius: 15px;
     padding: 30px;
-    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.3); /* 影を強調して立体感を出す */
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1); /* 控えめな影で高級感を演出 */
     margin-top: 20px;
 }
 
 h2, h3, h4 {
-    color: #d4af37; /* ゴールドでアクセントを付けた見出し */
+    color: #d4af37; /* ゴールドでアクセント */
     font-family: 'Garamond', serif;
 }
 
@@ -31,34 +31,35 @@ h2, h3, h4 {
     border-radius: 30px;
     text-decoration: none;
     transition: background 0.4s, box-shadow 0.4s, transform 0.4s;
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25);
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1); /* 控えめな影 */
 }
 
 .button:hover {
     background-color: #1e2b40;
-    box-shadow: 0px 8px 30px rgba(0, 0, 0, 0.5);
-    transform: translateY(-3px); /* ホバー時に少し浮き上がる演出 */
+    box-shadow: 0px 8px 30px rgba(0, 0, 0, 0.2); /* ホバー時に影を強調 */
+    transform: translateY(-3px); /* ホバー時に浮き上がり演出 */
 }
 
 .btn-cancel {
-    background-color: #6c757d; /* キャンセルボタンは中間色で落ち着いた印象 */
+    background-color: #d9534f; /* キャンセルボタンは落ち着いた赤で視認性を高める */
     border: none;
+    color: #ffffff;
 }
 
 .btn-cancel:hover {
-    background-color: #5a6268;
+    background-color: #c9302c;
 }
 
 input[type="text"], input[type="number"], input[type="datetime-local"], textarea {
     display: block;
-    background-color: #222; /* ダークグレーで高級感を持たせる */
-    color: #e0e0e0; /* テキストは明るく */
+    background-color: #f9f9f9; /* 白に近い柔らかな色 */
+    color: #333;
     width: 100%;
     max-width: 600px;
     padding: 15px;
     margin-bottom: 15px;
     border-radius: 8px;
-    border: 1px solid #d4af37; /* ゴールドの枠線 */
+    border: 1px solid #ccc; /* 落ち着いたグレー */
     transition: box-shadow 0.3s, border-color 0.3s;
 }
 
@@ -67,72 +68,38 @@ input[type="text"]:focus, input[type="number"]:focus, input[type="datetime-local
     border-color: #d4af37; /* フォーカス時にゴールドの枠 */
 }
 
-input[type="number"] {
-    max-width: 100px; /* 幅を少し狭く設定して、他の要素とのバランスを取る */
-}
-
 .restaurant-card {
-    background-color: #1c1c1c;
+    background-color: #ffffff;
     border-radius: 12px;
     padding: 20px;
     margin-bottom: 30px;
-    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
-    border: 1px solid #333; /* 控えめな枠線 */
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1); /* 控えめな影 */
     border-left: 5px solid #d4af37; /* ゴールドのライン */
     transition: transform 0.4s, box-shadow 0.4s;
 }
 
 .restaurant-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0px 12px 35px rgba(0, 0, 0, 0.3); /* より強調した影で浮き上がり感を追加 */
+    box-shadow: 0px 12px 35px rgba(0, 0, 0, 0.15); /* 浮き上がり感を追加 */
 }
 
 .restaurant-card .name {
-    font-size: 2em;
-    color: #d4af37; /* ゴールドのタイトル */
+    font-size: 1.8em;
+    color: #2f3e56; /* タイトルの色をダークネイビーに */
     font-weight: bold;
     padding-bottom: 10px;
     border-bottom: 1px solid #ccc;
     margin-bottom: 10px;
 }
 
-.restaurant-card .description, .restaurant-card .hours {
-    font-size: 1em;
-    color: #666;
-    padding: 5px 0;
-    margin-top: 10px;
-    line-height: 1.8; /* 読みやすさを強調 */
-}
-
 .review {
-    background-color: #1c1c1c;
+    background-color: #ffffff;
     padding: 20px;
     margin-bottom: 20px;
     border-radius: 12px;
     border-left: 5px solid #2f3e56; /* ダークネイビーのラインを追加 */
     box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1);
-    color: #ccc;
-}
-
-.label-short, .label-long {
-    display: block;
-    font-weight: bold;
-    margin-bottom: 5px;
-}
-
-@keyframes fadeInUp {
-    0% {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.restaurant-card, .button, .review {
-    animation: fadeInUp 0.8s ease-in-out; /* ゆっくりとしたアニメーション */
+    color: #333;
 }
 
 @media (max-width: 768px) {
