@@ -4,7 +4,7 @@
 
 {% block content %}
 <a href="{% url 'top' %}" class="button">トップページに戻る</a>
-
+<br>
 <h4 class="premium-setting">お気に入り店舗の一覧</h4>
 
 {% if favorites %}
@@ -17,6 +17,7 @@
 {% else %}
     <p>現在、お気に入り店舗はありません。</p>
 {% endif %}
+<br>
 
 <h4 class="premium-setting">有料会員設定</h4>
 
@@ -29,7 +30,7 @@
         <input type="submit" value="有料会員登録はこちら">
     </form>
 {% endif %}
-
+<br>
 
 <h4 class="premium-setting">予約一覧</h4>
 
