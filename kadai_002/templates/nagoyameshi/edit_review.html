@@ -7,7 +7,7 @@
     {% csrf_token %}
     {{ form.as_p }}
     <input type="submit" value="更新">
-    <a href="{% url 'restaurant' review.restaurant.id %}" class="button">キャンセル</a>
+    <a href="{% url 'restaurant' review.restaurant.id %}" class="btn-cancel button">キャンセル</a>
 </form>
 
 {% endblock %}

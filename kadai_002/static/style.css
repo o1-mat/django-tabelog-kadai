@@ -1,59 +1,65 @@
 body {
-    background-color: #f5f5f5; /* 柔らかいアイボリーグレー */
-    font-family: 'Georgia', serif; /* セリフフォント */
-    color: #333;
+    background-color: #121212; /* 深い黒に近い背景色で高級感 */
+    font-family: 'Garamond', serif; /* 洗練されたフォント */
+    color: #e0e0e0; /* 明るすぎないホワイト */
+    line-height: 1.8;
     margin: 0;
     padding: 0;
-    line-height: 1.8; /* 行間を広く */
 }
 
-/* コンテナ */
 .container {
-    margin-top: 20px;
+    background-color: #1c1c1c; /* ダークグレーの背景 */
+    border-radius: 15px;
     padding: 30px;
-    background-color: #ffffff;
-    border-radius: 15px; /* 少し丸みを持たせる */
-    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1); /* シャドウで上質感を追加 */
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.3); /* 影を強調して立体感を出す */
+    margin-top: 20px;
 }
 
-/* ボタンの改善 */
+h2, h3, h4 {
+    color: #d4af37; /* ゴールドでアクセントを付けた見出し */
+    font-family: 'Garamond', serif;
+}
+
 .button {
     display: inline-block;
-    padding: 12px 28px;
-    margin-bottom: 20px;
-    font-size: 16px;
     color: #ffffff;
     background-color: #2f3e56; /* ダークネイビー */
     border: 2px solid #d4af37; /* ゴールドのボーダー */
+    padding: 12px 28px;
+    margin-bottom: 20px;
+    font-size: 16px;
+    border-radius: 30px;
     text-decoration: none;
-    border-radius: 25px; /* 少し丸みを持たせる */
-    transition: background 0.4s, box-shadow 0.4s;
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15); /* 控えめな影で立体感を追加 */
+    transition: background 0.4s, box-shadow 0.4s, transform 0.4s;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25);
 }
 
 .button:hover {
-    background-color: #1e2b40; /* ホバー時に少し暗めの色に変更 */
-    box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.2); /* シャドウを強調　浮き上がり感を演出 */
+    background-color: #1e2b40;
+    box-shadow: 0px 8px 30px rgba(0, 0, 0, 0.5);
+    transform: translateY(-3px); /* ホバー時に少し浮き上がる演出 */
 }
 
-/* ラベル */
-.label-short, .label-long {
-    display: block; /* ラベルをブロック要素にして、入力フィールドの上に表示 */
-    font-weight: bold;
-    margin-bottom: 5px; /* ラベルと入力フィールドの間に余白を追加 */
+.btn-cancel {
+    background-color: #6c757d; /* キャンセルボタンは中間色で落ち着いた印象 */
+    border: none;
 }
 
-/* フォームの入力フィールド */
+.btn-cancel:hover {
+    background-color: #5a6268;
+}
+
 input[type="text"], input[type="number"], input[type="datetime-local"], textarea {
-    display: block; /* 入力フィールドをブロック要素にして幅を占有 */
+    display: block;
+    background-color: #222; /* ダークグレーで高級感を持たせる */
+    color: #e0e0e0; /* テキストは明るく */
     width: 100%;
     max-width: 600px;
-    padding: 10px;
-    margin-bottom: 15px; /* 入力フィールド間に余白を追加 */
+    padding: 15px;
+    margin-bottom: 15px;
     border-radius: 8px;
-    border: 1px solid #ccc;
+    border: 1px solid #d4af37; /* ゴールドの枠線 */
     transition: box-shadow 0.3s, border-color 0.3s;
-    background-color: #fafafa; /* 柔らかい背景色で落ち着いた印象 */
 }
 
 input[type="text"]:focus, input[type="number"]:focus, input[type="datetime-local"]:focus, textarea:focus {
@@ -61,32 +67,29 @@ input[type="text"]:focus, input[type="number"]:focus, input[type="datetime-local
     border-color: #d4af37; /* フォーカス時にゴールドの枠 */
 }
 
-/* 数値入力フィールド */
 input[type="number"] {
     max-width: 100px; /* 幅を少し狭く設定して、他の要素とのバランスを取る */
-    margin-left: 0; /* ラベルとの間隔をリセット */
 }
 
-/* 店舗カードのデザイン */
 .restaurant-card {
-    background-color: #ffffff;
+    background-color: #1c1c1c;
     border-radius: 12px;
     padding: 20px;
     margin-bottom: 30px;
     box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
-    border: 1px solid #e5e5e5; /* 軽く目立つ枠を追加 */
-    border-left: 5px solid #d4af37; /* 左側にゴールドラインを追加 */
+    border: 1px solid #333; /* 控えめな枠線 */
+    border-left: 5px solid #d4af37; /* ゴールドのライン */
     transition: transform 0.4s, box-shadow 0.4s;
 }
 
 .restaurant-card:hover {
-    transform: translateY(-3px); /* ホバー時にわずかに浮き上がる */
-    box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.15); /* 控えめな影で立体感を追加 */
+    transform: translateY(-5px);
+    box-shadow: 0px 12px 35px rgba(0, 0, 0, 0.3); /* より強調した影で浮き上がり感を追加 */
 }
 
 .restaurant-card .name {
-    font-size: 1.8em;
-    color: #2f3e56; /* タイトルの色をダークネイビーに */
+    font-size: 2em;
+    color: #d4af37; /* ゴールドのタイトル */
     font-weight: bold;
     padding-bottom: 10px;
     border-bottom: 1px solid #ccc;
@@ -101,18 +104,22 @@ input[type="number"] {
     line-height: 1.8; /* 読みやすさを強調 */
 }
 
-/* レビュー一覧 */
 .review {
-    background-color: #ffffff;
+    background-color: #1c1c1c;
     padding: 20px;
     margin-bottom: 20px;
     border-radius: 12px;
     border-left: 5px solid #2f3e56; /* ダークネイビーのラインを追加 */
     box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1);
-    font-style: italic; /* イタリック */
+    color: #ccc;
 }
 
-/* アニメーション */
+.label-short, .label-long {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
 @keyframes fadeInUp {
     0% {
         opacity: 0;
@@ -128,7 +135,6 @@ input[type="number"] {
     animation: fadeInUp 0.8s ease-in-out; /* ゆっくりとしたアニメーション */
 }
 
-/* レスポンシブデザイン */
 @media (max-width: 768px) {
     .container {
         padding: 20px;

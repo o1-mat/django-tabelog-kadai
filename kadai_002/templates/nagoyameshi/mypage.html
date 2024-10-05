@@ -4,7 +4,7 @@
 {% block content %}
 <a href="{% url 'top' %}" class="button">トップページに戻る</a>
 <br>
-<h4 class="premium-setting">お気に入り店舗の一覧</h4>
+<h4 class="section-title premium-setting">お気に入り店舗の一覧</h4>
 
 {% if favorites %}
     {% for favorite in favorites %}
@@ -22,7 +22,7 @@
 {% endif %}
 <br>
 
-<h4 class="premium-setting">有料会員設定</h4>
+<h4 class="section-title premium-setting">有料会員設定</h4>
 
 {% if is_premium %}
     <a href="{% url 'portal' %}">有料会員の設定はこちら</a>
@@ -34,7 +34,7 @@
 {% endif %}
 <br><br>
 
-<h4 class="premium-setting">予約一覧</h4>
+<h4 class="section-title premium-setting">予約一覧</h4>
 
 {% if reservations %}
     {% for reservation in reservations %}
