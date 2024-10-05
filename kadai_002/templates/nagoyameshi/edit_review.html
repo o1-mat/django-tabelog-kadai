@@ -2,10 +2,17 @@
 
 {% block content %}
 <h2>レビューを編集する</h2>
-<form method="post">
+
+<form action="{% url 'edit_review' review.id %}" method="post" style="display:inline;">
     {% csrf_token %}
-    {{ form.as_p }}
+    <textarea id="content" name="content" rows="4" required>{{ review.content }}</textarea>
     <input type="submit" value="更新">
 </form>
+
 <a href="{% url 'restaurant' review.restaurant.id %}">キャンセル</a>
 {% endblock %}
+
+
+
+
+
