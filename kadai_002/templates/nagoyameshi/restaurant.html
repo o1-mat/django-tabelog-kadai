@@ -28,12 +28,12 @@
     <input type="text" name="restaurant" value="{{ restaurant.id }}">
     {% endcomment %}
 
-    <label for="star">評価 (1〜5):</label>
-    <input type="number" name="star" min="1" max="5">
+    <label for="star">評価 (星1〜5):</label>
+    <input type="number" name="star" min="1" max="5"><br><br>
     <label for="content">レビュー内容:</label>
-    <textarea id="content" name="content" rows="4" placeholder="レビューを入力してください。" required></textarea>
+    <textarea id="content" name="content" rows="4" placeholder="レビューを入力してください。" required></textarea><br>
 
-    <input type="submit" value="投稿">
+    <input type="submit" value="レビューを投稿">
 </form>
 
 
@@ -45,9 +45,9 @@
     <input type="datetime-local" id="datetime" name="datetime" required><br><br>
     
     <label for="headcount">人数:</label><br>
-    <input type="number" id="headcount" name="headcount" min="1" placeholder="例: 2人なら「2」と入力" required><br><br>
+    <input type="number" id="headcount" name="headcount" min="1" placeholder="例: 2人なら「2」と入力" required><br>
 
-    <input type="submit" value="予約">
+    <input type="submit" value="予約する">
 </form>
 
 
