@@ -39,7 +39,7 @@ urlpatterns = [
     path('mypage/', MypageView.as_view(), name="mypage"),
     path('favorite/delete/<int:pk>/', DeleteFavoriteView.as_view(), name='delete_favorite'),
     path('reservation/delete/<int:pk>/', DeleteReservationView.as_view(), name='delete_reservation'),
-    path('review/edit/<int:pk>/', ReviewEditView.as_view(), name='edit_review'),
+    path('review/edit/<int:pk>/', EditReviewView.as_view(), name='edit_review'),
     path('review/delete/<int:pk>/', DeleteReviewView.as_view(), name='delete_review'),
 
     path('accounts/', include('allauth.urls')),
