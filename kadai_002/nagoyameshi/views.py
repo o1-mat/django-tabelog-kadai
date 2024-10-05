@@ -243,6 +243,9 @@ class MypageView(LoginRequiredMixin, View):
         context = {}
         # 自分がお気に入りした店舗のデータを取り出す。Favoriteモデルを使って自分のデータだけ取り出す。
         context["favorites"] = Favorite.objects.filter(user=request.user)
+        # 自分が予約した店舗のデータを取り出す。Reservationモデルを使って自分のデータだけ取り出す。
+        context["reservations"] = Reservation.objects.filter(user=request.user)
+
 
         # 自分以外のユーザーのお気に入り情報が取れてしまう。
         # Favorite.objects.all()
