@@ -1,16 +1,16 @@
 {% extends 'base.html' %} {% block title %}NAGOYAMESHI{% endblock %} {% block content %}
 <a href="{% url 'top' %}" class="button">トップページに戻る</a>
-<h6>店舗詳細</h6>
-<h4>{{ restaurant.name }}</h4> <br>
+<h6>店舗詳細</h6><br>
+<h3>{{ restaurant.name }}</h3><br>
 {# 店舗説明(description)を表示するには？ #}
-<h6>[店舗説明]{{ restaurant.description }}</h6> <br>
+<h6>[店舗説明]{{ restaurant.description }}</h6> 
 <h6>[営業時間]{{ restaurant.start_at }}~{{ restaurant.end_at }}</h6> <br>
 
 {# TODO:お気に入りのボタンを用意する #}
 <form action="{% url 'favorite' restaurant.id %}" method="post">
     {% csrf_token %}
     <input type="submit" value="お気に入り登録する">
-</form>
+</form><br><br>
 
 
 {# TODO: レビュー投稿用のフォームを作る #}
@@ -34,7 +34,7 @@
     <textarea id="content" name="content" rows="4" placeholder="レビューを入力してください。" required></textarea><br>
 
     <input type="submit" value="レビューを投稿">
-</form>
+</form><br><br>
 
 
 
@@ -42,13 +42,13 @@
 <form action="{% url 'reservation' restaurant.id %}" method="post">
     {% csrf_token %}
     <label for="datetime">予約日時:</label><br>
-    <input type="datetime-local" id="datetime" name="datetime" required><br><br>
+    <input type="datetime-local" id="datetime" name="datetime" required><br>
     
     <label for="headcount">人数:</label><br>
     <input type="number" id="headcount" name="headcount" min="1" placeholder="例: 2人なら「2」と入力" required><br>
 
     <input type="submit" value="予約する">
-</form>
+</form><br><br>
 
 
 
