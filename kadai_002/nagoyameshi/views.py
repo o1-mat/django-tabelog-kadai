@@ -265,10 +265,17 @@ class MypageView(LoginRequiredMixin, View):
 
 # お気に入りの削除を受け付けるビュー
 class DeleteFavoriteView(LoginRequiredMixin, View):
+    
     def post(self, request, pk, *args, **kwargs):
-        favorite = get_object_or_404(Favorite, pk=pk)
+        # ログインユーザーがお気に入りしたデータを取得
+        favorite = get_object_or_404(Favorite, pk=pk, user=request.user)
+
+        # お気に入りを削除
         favorite.delete()
+        
+        # 削除後、マイページへリダイレクト
         return redirect("mypage")
+
 
 
 # Stripeの処理 #
