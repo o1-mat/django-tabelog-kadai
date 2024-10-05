@@ -8,11 +8,11 @@ from .models import Category,Restaurant,Review,Favorite,Reservation,PremiumUser
 
 class CategoryAdmin(admin.ModelAdmin):
     list_display	= [ "id", "name", "created_at", "updated_at" ]
-    search_fields = ["name"]
+    search_fields   = ["name"]
 
 class RestaurantAdmin(admin.ModelAdmin):
     list_display    = [ "id", "category", "name", "image", "description", "start_at", "end_at", "min_cost", "max_cost", "post_code", "address", "tel", "created_at", "updated_at" ]
-    search_fields   = [ "category","name" ]
+    search_fields   = [ "category__name","name" ]
 
 class ReviewAdmin(admin.ModelAdmin):
     list_display	= [ "id", "user", "restaurant", "star", "content", "created_at", "updated_at" ]

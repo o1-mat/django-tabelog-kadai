@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.views import View
 from django.contrib.auth.mixins import LoginRequiredMixin
 
@@ -263,6 +263,13 @@ class MypageView(LoginRequiredMixin, View):
         return render(request, "nagoyameshi/mypage.html", context)
 
 
+# お気に入りの削除を受け付けるビュー
+class DeleteFavoriteView(LoginRequiredMixin, View):
+    def post(self, request, pk, *args, **kwargs):
+        favorite = get_object_or_404(Favorite, pk=pk)
+        favorite.delete()
+        return redirect("mypage")
+
 
 # Stripeの処理 #
 from django.conf import settings
@@ -425,3 +432,4 @@ class PremiumView(View):
 
 
         return redirect("mypage")
+    

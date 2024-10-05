@@ -1,7 +1,6 @@
 {% extends 'base.html' %}
 {% block title %}NAGOYAMESHI{% endblock %}
 
-
 {% block content %}
 <a href="{% url 'top' %}" class="button">トップページに戻る</a>
 <br>
@@ -12,6 +11,10 @@
     <div>
         <div>店舗名: {{ favorite.restaurant }}</div>
         <a href="{% url 'restaurant' favorite.restaurant.id %}">詳細</a>
+        <form action="{% url 'delete_favorite' favorite.id %}" method="post" style="display:inline;">
+            {% csrf_token %}
+            <input type="submit" value="削除">
+        </form>
     </div>
     {% endfor %}
 {% else %}
@@ -24,7 +27,6 @@
 {% if is_premium %}
     <a href="{% url 'portal' %}">有料会員の設定はこちら</a>
 {% else %}
-    {# CheckoutView の postメソッドを呼び出す。 #}
     <form action="{% url 'checkout' %}" method="post">
         {% csrf_token %}
         <input type="submit" value="有料会員登録はこちら">
@@ -48,6 +50,4 @@
     <p>現在、予約はありません。</p>
 {% endif %}
 
-
 {% endblock %}
-
