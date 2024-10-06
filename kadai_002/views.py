@@ -322,7 +322,7 @@ class EditReviewView(LoginRequiredMixin, View):
         if form.is_valid():
             form.save()
             # 編集後、店舗の詳細ページへリダイレクト
-            return redirect('restaurant', restaurant.id)
+            return redirect('restaurant', pk=restaurant.pk)
         
         context = {
             'form': form,
