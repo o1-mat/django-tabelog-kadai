@@ -291,12 +291,13 @@ class DeleteReservationView(LoginRequiredMixin, View):
         return redirect("mypage")
 
 
+
 # レビューの編集を受け付けるビュー
 class EditReviewView(LoginRequiredMixin, View):
     
     def get(self, request, pk, *args, **kwargs):
         # ログインユーザーが投稿したレビューを取得
-        review = get_object_or_404(Review, pk=pk, user=request.user, restaurant__pk=kwargs['restaurant_pk'])
+        review = get_object_or_404(Review, pk=pk, user=request.user)
         
         # レビューに関連するレストラン情報を取得して表示する
         restaurant = review.restaurant
@@ -311,7 +312,7 @@ class EditReviewView(LoginRequiredMixin, View):
 
     def post(self, request, pk, *args, **kwargs):
         # ログインユーザーが投稿したレビューを取得
-        review = get_object_or_404(Review, pk=pk, user=request.user, restaurant__pk=kwargs['restaurant_pk'])
+        review = get_object_or_404(Review, pk=pk, user=request.user)
         
         # レビューに関連するレストラン情報を取得
         restaurant = review.restaurant
@@ -321,7 +322,7 @@ class EditReviewView(LoginRequiredMixin, View):
         if form.is_valid():
             form.save()
             # 編集後、店舗の詳細ページへリダイレクト
-            return redirect('restaurant', kwargs['restaurant_pk'])
+            return redirect('restaurant', restaurant.id)
         
         context = {
             'form': form,
@@ -329,7 +330,6 @@ class EditReviewView(LoginRequiredMixin, View):
             'restaurant': restaurant,
         }
         return render(request, 'nagoyameshi/edit_review.html', context)
-
 
 
 
