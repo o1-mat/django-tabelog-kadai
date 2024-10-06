@@ -342,7 +342,7 @@ class DeleteReviewView(LoginRequiredMixin, View):
         # レビューを削除
         review.delete()
         # 削除後、店舗の詳細ページへリダイレクト
-        return redirect('restaurant', pk)
+        return redirect('restaurant', pk=restaurant.pk)
 
 
 # Stripeの処理 #
