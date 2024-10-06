@@ -230,8 +230,9 @@ class ReservationView(LoginRequiredMixin, View):
 
         if form.is_valid():
             form.save()
+            messages.success(request, "予約が完了しました。")
         else:
-            print(form.errors)
+            messages.error(request, "予約に失敗しました。入力内容を確認してください。")
 
         
         # 予約した店舗にリダイレクト
