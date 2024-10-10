@@ -1,6 +1,10 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views import View
-from django.contrib.auth.mixins import LoginRequiredMixin
+
+# from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import AccessMixin
+
+from allauth.account.admin import EmailAddress
 
 
 # models.pyから Restaurantを importするには
@@ -16,13 +20,30 @@ from .models import Reservation
 # models.py から PremiumUser をimportする
 from .models import PremiumUser
 
-
 # forms.py から ReviewForm をimportする。
 from .forms import ReviewForm
 from .forms import FavoriteForm
 from .forms import ReservationForm
 
 from django.db.models import Q
+
+
+
+class LoginRequiredMixin(AccessMixin):
+
+    def dispatch(self, request, *args, **kwargs):
+
+        if not request.user.is_authenticated:
+            return self.handle_no_permission()
+
+        if not EmailAddress.objects.filter(user=request.user.id,verified=True).exists():
+            print("メールの確認が済んでいません")
+            return redirect("account_email")
+
+        #HttpResponseを返却する。
+        return super().dispatch(request, *args, **kwargs)
+
+
 
 class TopView(View):
     def get(self, request, *args, **kwargs):
@@ -131,6 +152,47 @@ class ReviewView(LoginRequiredMixin,View):
     # レビューの投稿(post)
     #                        ↓ Restaurantのid。どの店舗に対してレビューを投稿するか
     def post(self, request, pk, *args, **kwargs):
+        
+        # ====有料会員状態の判定(レビュー、お気に入り、予約に加える)==========================
+
+        # PremiumViewにアクセスしたユーザー(request.user)のデータを取り出す。(DBに対して絞り込みをする。)
+        premium_user = PremiumUser.objects.filter(user=request.user).first()
+
+        # 全データ読み込み
+        # PremiumUser.objects.all()
+
+        if not premium_user:
+            print("有料会員登録をしていません")
+            return redirect("mypage")
+
+
+        # カスタマーIDを元にStripeに問い合わせ
+        try:
+            subscriptions = stripe.Subscription.list(customer=premium_user.premium_code)
+        except:
+            print("このカスタマーIDは無効です。")
+            premium_user.delete()
+
+            return redirect("mypage")
+
+        is_premium = False
+
+        # ステータスがアクティブであるかチェック。
+        for subscription in subscriptions.auto_paging_iter():
+            if subscription.status == "active":
+                print("サブスクリプションは有効です。")
+
+                is_premium = True
+            else:
+                print("サブスクリプションが無効です。")
+
+
+        if not is_premium:
+            print("有料会員登録をしていない")
+            return redirect("mypage")
+        # ====有料会員状態の判定==========================            
+
+        # TODO: 有料会員登録をした人向けの処理        
         # TODO:投稿処理を書く
 
         # restaurant.htmlのフォームをここでバリデーションして、保存する。
@@ -158,6 +220,47 @@ class ReviewView(LoginRequiredMixin,View):
 class FavoriteView(LoginRequiredMixin, View):
     #                        ↓ Restaurantのid。どの店舗に対してレビューを投稿するか
     def post(self, request, pk, *args, **kwargs):
+        
+        # ====有料会員状態の判定(レビュー、お気に入り、予約に加える)==========================
+
+        # PremiumViewにアクセスしたユーザー(request.user)のデータを取り出す。(DBに対して絞り込みをする。)
+        premium_user = PremiumUser.objects.filter(user=request.user).first()
+
+        # 全データ読み込み
+        # PremiumUser.objects.all()
+
+        if not premium_user:
+            print("有料会員登録をしていません")
+            return redirect("mypage")
+
+
+        # カスタマーIDを元にStripeに問い合わせ
+        try:
+            subscriptions = stripe.Subscription.list(customer=premium_user.premium_code)
+        except:
+            print("このカスタマーIDは無効です。")
+            premium_user.delete()
+
+            return redirect("mypage")
+
+        is_premium = False
+
+        # ステータスがアクティブであるかチェック。
+        for subscription in subscriptions.auto_paging_iter():
+            if subscription.status == "active":
+                print("サブスクリプションは有効です。")
+
+                is_premium = True
+            else:
+                print("サブスクリプションが無効です。")
+
+
+        if not is_premium:
+            print("有料会員登録をしていない")
+            return redirect("mypage")
+        # ====有料会員状態の判定==========================            
+
+        # TODO: 有料会員登録をした人向けの処理        
         # TODO:投稿処理を書く
 
         # 送られてきたデータをコピーして、お気に入りしたいユーザーと店舗のidを追加する。
@@ -313,16 +416,16 @@ class EditReviewView(LoginRequiredMixin, View):
     def post(self, request, pk, *args, **kwargs):
         # ログインユーザーが投稿したレビューを取得
         review = get_object_or_404(Review, pk=pk, user=request.user)
-        
+    
         # レビューに関連するレストラン情報を取得
         restaurant = review.restaurant
-        
+    
         form = ReviewForm(request.POST, instance=review)
-        
+    
         if form.is_valid():
             form.save()
             # 編集後、店舗の詳細ページへリダイレクト
-            return redirect('restaurant', pk)
+            return redirect('restaurant', restaurant.id) 
         
         context = {
             'form': form,
