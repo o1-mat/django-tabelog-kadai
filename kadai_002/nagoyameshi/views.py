@@ -443,11 +443,11 @@ class DeleteReviewView(LoginRequiredMixin, View):
     def post(self, request, pk, *args, **kwargs):
         # ログインユーザーが投稿したレビューを取得
         review = get_object_or_404(Review, pk=pk, user=request.user)
-        restaurant_id = review.restaurant.id
+        restaurant = review.restaurant
         # レビューを削除
         review.delete()
         # 削除後、店舗の詳細ページへリダイレクト
-        return redirect('restaurant', pk)
+        return redirect('restaurant', restaurant.id)
 
 
 # Stripeの処理 #
