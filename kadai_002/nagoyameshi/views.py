@@ -338,7 +338,7 @@ class ReservationView(LoginRequiredMixin, View):
             messages.error(request, "予約に失敗しました。入力内容を確認してください。")
 
         # 予約した店舗にリダイレクト
-        return redirect('restaurant', restaurant.id) 
+        return redirect('restaurant', pk) 
 
 
 # マイページを表示するビュー
