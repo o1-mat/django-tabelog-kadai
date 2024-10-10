@@ -335,10 +335,10 @@ class ReservationView(LoginRequiredMixin, View):
             form.save()
             messages.success(request, "予約が完了しました。")
         else:
-            messages.error(request, "予約に失敗しました。入力内容を確認してください。")
+            messages.error(request, f"予約に失敗しました。入力内容を確認してください。エラー: {form.errors}")
 
         # 予約した店舗にリダイレクト
-        return redirect('restaurant', pk=pk) 
+        return redirect('restaurant', pk) 
 
 
 # マイページを表示するビュー
