@@ -190,6 +190,7 @@ class ReviewView(LoginRequiredMixin,View):
         if not is_premium:
             print("有料会員登録をしていない")
             return redirect("mypage")
+        
         # ====有料会員状態の判定==========================            
 
         # TODO: 有料会員登録をした人向けの処理        
@@ -279,6 +280,7 @@ class FavoriteView(LoginRequiredMixin, View):
         # お気に入りを投稿した後、店舗の詳細ページへリダイレクト
         return redirect("restaurant", pk)
 
+
 # 予約を受け付けるビュー
 class ReservationView(LoginRequiredMixin, View):
     def post(self, request, pk, *args, **kwargs):
@@ -333,12 +335,12 @@ class ReservationView(LoginRequiredMixin, View):
 
         if form.is_valid():
             form.save()
-            messages.success(request, "予約が完了しました。")
         else:
-            messages.error(request, f"予約に失敗しました。入力内容を確認してください。エラー: {form.errors}")
+            print(form.errors)
 
+        
         # 予約した店舗にリダイレクト
-        return redirect('restaurant', pk) 
+        return redirect("restaurant", pk)
 
 
 # マイページを表示するビュー
